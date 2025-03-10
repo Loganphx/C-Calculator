@@ -1,7 +1,12 @@
 #include <SFML/Graphics.hpp>
+#include <list>
+
+std::list<sf::Transformable> entities = {};
 
 int main()
 {
+    entities = {};
+
     auto window = sf::RenderWindow(
             sf::VideoMode({1280, 720u}),
                                    "CMake SFML Project",
@@ -39,6 +44,12 @@ int main()
         }
     };
 
+//    const auto onMouseMoved = [&window](const sf::Event::MouseMoved& mouseMoved) {
+//        for (int i = 0; i < entities.size(); ++i) {
+//            if(mouseMoved.position.x)
+//        }
+//    };
+
     const auto onFocusLost = [&window](const sf::Event::FocusLost&) {
         //myGame.pause();
         // Background fps is 30.
@@ -74,21 +85,21 @@ int main()
         sf::Font font("pixel-arial-14.otf"); // Throws sf::Exception if an error occurs
 
         sf::Text text(font); // a font is required to make a text object
-
-        // set the string to display
         text.setString(std::to_string(fps));
-
-        // set the character size
         text.setCharacterSize(24); // in pixels, not points!
-
-        // set the color
         text.setFillColor(sf::Color::Red);
-
-        // set the text style
         text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+
 
         // inside the main loop, between window.clear() and window.display()
         window.draw(text);
+
+        sf::CircleShape shape(50.f);
+        entities.push_back(shape);
+
+        shape.setFillColor(sf::Color(100, 250, 50));
+        shape.setPosition({250.f, 250.f});
+        window.draw(shape);
 
         window.display();
 
