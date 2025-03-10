@@ -2,8 +2,11 @@
 
 int main()
 {
-    auto window = sf::RenderWindow(sf::VideoMode({1920u, 1080u}), "CMake SFML Project");
-    window.setFramerateLimit(144);
+    auto window = sf::RenderWindow(
+            sf::VideoMode({1280, 720u}),
+                                   "CMake SFML Project",
+                                   sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
+    window.setFramerateLimit(60);
 
     while (window.isOpen())
     {
@@ -12,6 +15,15 @@ int main()
             if (event->is<sf::Event::Closed>())
             {
                 window.close();
+            }
+            else if(const auto* mousePressed = event->getIf<sf::Event::MouseButtonPressed>())
+            {
+                if(mousePressed->button == sf::Mouse::Button::Left) {
+                    // Left Click!
+                }
+                else if(mousePressed->button == sf::Mouse::Button::Right) {
+                    // Right Click!
+                }
             }
         }
 
