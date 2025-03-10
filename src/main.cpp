@@ -42,7 +42,7 @@ int main()
     const auto onFocusLost = [&window](const sf::Event::FocusLost&) {
         //myGame.pause();
         // Background fps is 30.
-        window.setFramerateLimit(30);
+        window.setFramerateLimit(10);
     };
 
     const auto onFocusGained = [&window](const sf::Event::FocusGained&) {
@@ -51,6 +51,10 @@ int main()
         //Todo replace this with a config value
         window.setFramerateLimit(60);
     };
+
+    clock_t current_ticks, delta_ticks;
+    clock_t fps = 0;
+
     while (window.isOpen())
     {
         window.handleEvents(onClose, onMousePressed, onKeyPressed, onFocusLost, onFocusGained);
@@ -63,7 +67,34 @@ int main()
 ////            }
 //        }
 
+        current_ticks = clock();
+
         window.clear();
+
+        sf::Font font("pixel-arial-14.otf"); // Throws sf::Exception if an error occurs
+
+        sf::Text text(font); // a font is required to make a text object
+
+        // set the string to display
+        text.setString(std::to_string(fps));
+
+        // set the character size
+        text.setCharacterSize(24); // in pixels, not points!
+
+        // set the color
+        text.setFillColor(sf::Color::Red);
+
+        // set the text style
+        text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+
+        // inside the main loop, between window.clear() and window.display()
+        window.draw(text);
+
         window.display();
+
+        delta_ticks = clock() - current_ticks; //the time, in ms, that took to render the scene
+        if(delta_ticks > 0)
+            fps = CLOCKS_PER_SEC / delta_ticks;
+//        cout << fps << endl;
     }
 }
