@@ -1,0 +1,21 @@
+# ninja log v5
+1	84	7633280147859374	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-mkdir	745040549abe02ad
+1	84	7633280147859374	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-mkdir	745040549abe02ad
+85	2845	7633280175492629	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-download	99fdb92a533c1dc
+85	2845	7633280175492629	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-download	99fdb92a533c1dc
+2846	3050	0	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-update	92503c9581c5b0e8
+2846	3050	0	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-update	92503c9581c5b0e8
+3051	3148	7633280178504516	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-patch	b47dc83a78d3dc1e
+3051	3148	7633280178504516	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-patch	b47dc83a78d3dc1e
+3148	3220	7633280179240842	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-configure	4d513893a9004104
+3148	3220	7633280179240842	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-configure	4d513893a9004104
+3220	3290	7633280179926104	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-build	3eeff1af7ce02981
+3220	3290	7633280179926104	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-build	3eeff1af7ce02981
+3290	3360	7633280180629305	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-install	b1498d66ba5b73f2
+3290	3360	7633280180629305	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-install	b1498d66ba5b73f2
+3360	3429	7633280181329729	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-test	c63b93c7a198dbf3
+3360	3429	7633280181329729	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-test	c63b93c7a198dbf3
+3429	3528	7633280182299670	CMakeFiles/ogg-populate-complete	db108f857ac1db19
+3429	3528	7633280182299670	ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-done	db108f857ac1db19
+3429	3528	7633280182299670	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/CMakeFiles/ogg-populate-complete	db108f857ac1db19
+3429	3528	7633280182299670	C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw/_deps/ogg-subbuild/ogg-populate-prefix/src/ogg-populate-stamp/ogg-populate-done	db108f857ac1db19
