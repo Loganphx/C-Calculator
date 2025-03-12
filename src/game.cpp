@@ -51,9 +51,7 @@ void game::updateSFMLEvents()
         else if(const auto* mouseMoved = this->sfEvent->getIf<sf::Event::MouseMoved>())
         {
             sf::Vector2<float> pos(mouseMoved->position.x, mouseMoved->position.y);
-            std::cout
-                    << "Mouse Pos: " + std::to_string(mouseMoved->position.x) + " " + std::to_string(mouseMoved->position.y) +
-                       "\n";
+//            std::cout<< "Mouse Pos: " + std::to_string(mouseMoved->position.x) + " " + std::to_string(mouseMoved->position.y) +"\n";
 //            mousePos = pos;
 //            for (const sf::CircleShape &entity: entities) {
 //                sf::FloatRect boundingBox = entity.getGlobalBounds();
@@ -83,6 +81,7 @@ void game::render() {
     this->window->clear();
 
     // draw
+    this->window->draw(clockText);
 
     this->window->display();
 }
@@ -91,6 +90,7 @@ void game::run() {
     this->window->setFramerateLimit(60);
 
     while(this->window->isOpen()) {
+        this->updateDt();
         this->update();
         this->render();
     }
@@ -104,6 +104,11 @@ void game::run() {
     fps_text.setCharacterSize(24); // in pixels, not points!
     fps_text.setFillColor(sf::Color::Red);
     fps_text.setStyle(sf::Text::Bold | sf::Text::Underlined);
+
+    clockText = sf::Text(font); // a font is required to make a text object
+    clockText.setCharacterSize(24); // in pixels, not points!
+    clockText.setFillColor(sf::Color::White);
+    clockText.setStyle(sf::Text::Bold | sf::Text::Underlined);
 
     sf::CircleShape circle(50.f);
     circle.setFillColor(sf::Color(100, 250, 50));
@@ -133,8 +138,6 @@ void game::run() {
 ////            }
 //        }
 
-        current_ticks = clock();
-        fps_text.setString(std::to_string(fps));
 
         window->clear();
 // let's define a view
@@ -169,4 +172,11 @@ void game::run() {
             fps = CLOCKS_PER_SEC / delta_ticks;
 //        cout << fps << endl;
     }
+}
+
+void game::updateDt()
+{
+    this->dt = this->dtClock.getElapsedTime().asSeconds();
+    system("cls");
+    std::cout << this->dt << "\n";
 }

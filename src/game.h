@@ -14,11 +14,18 @@ private:
     sf::RenderWindow *window;
     std::optional<sf::Event> sfEvent;
 
+    sf::Clock dtClock;
+    float dt;
+
+    sf::Font f = sf::Font("pixel-arial-14.otf");
+    sf::Text clockText = sf::Text(f);
+
     void initWindow();
 public:
     game();
     virtual ~game();
 
+    void updateDt();
     void updateSFMLEvents();
     void update();
     void render();
