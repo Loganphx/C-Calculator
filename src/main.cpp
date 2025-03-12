@@ -4,6 +4,8 @@
 
 std::list<sf::CircleShape> entities = {};
 sf::Vector2<float> mousePos;
+int map[10][10] = {};
+
 int main()
 {
     entities = {};
@@ -93,11 +95,12 @@ int main()
     boundBox.setOutlineColor(sf::Color::Red);
     boundBox.setOutlineThickness(2.f);
 
-    sf::Text mouseText(font); // a font is required to make a text object
-    mouseText.setCharacterSize(24); // in pixels, not points!
-    mouseText.setFillColor(sf::Color::Red);
-    mouseText.setStyle(sf::Text::Bold | sf::Text::Underlined);
-    // inside the main loop, between window.clear() and window.display()
+    sf::View view(sf::FloatRect({0.f, 0.f}, {1920.f, 1080.f}));
+
+// activate it
+//        view.zoom(0.01f);
+    view.zoom(0.5f);
+    window.setView(view);
 
     while (window.isOpen())
     {
@@ -113,15 +116,32 @@ int main()
 
         current_ticks = clock();
         fps_text.setString(std::to_string(fps));
-        mouseText.setString(std::to_string(static_cast<int>(mousePos.x)) + " " + std::to_string(static_cast<int>(mousePos.y)));
-        mouseText.setPosition(mousePos);
 
         window.clear();
+// let's define a view
+
 
         window.draw(fps_text);
         window.draw(circle);
         window.draw(boundBox);
-        window.draw(mouseText);
+
+        for(int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; ++j) {
+                sf::RectangleShape box({32,32});
+                box.setPosition({i*32.f, j*32.f});
+                box.setFillColor(sf::Color::Black);
+                box.setOutlineColor(sf::Color::White);
+                box.setOutlineThickness(2.f);
+
+                sf::Text number(font);
+                number.setCharacterSize(12); // in pixels, not points!
+                number.setString(std::to_string(i) + ", " + std::to_string(j));
+                number.setPosition({i*32.f, j*32.f});
+
+                window.draw(box);
+                window.draw(number);
+            }
+        }
 
         window.display();
 
