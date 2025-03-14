@@ -38,6 +38,6 @@ CMake Deprecation Warning at cmake-build-debug-mingw/_deps/vorbis-src/CMakeLists
 
 
 -- Configuring vorbis 1.3.7
--- Configuring done (18.8s)
--- Generating done (1.1s)
+-- Configuring done (7.1s)
+-- Generating done (0.7s)
 -- Build files have been written to: C:/Users/Logan/CLionProjects/C-Calculator/cmake-build-debug-mingw

@@ -1,12 +1,33 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include "game.h"
 
 //
 // Created by Logan on 3/11/2025.
 void game::initWindow() {
-    this->window = new sf::RenderWindow(sf::VideoMode({1280, 720u}), "C++ RPG", sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
+
+    std::ifstream ifs("config/window.ini");
+
+    std::string title = "None";
+    sf::VideoMode window_bounds({720,380});
+    unsigned framerate_limit = 120;
+    bool vertical_sync_enabled = false;
+
+    if(ifs.is_open())
+    {
+        std::getline(ifs,title);
+        ifs >> window_bounds.size.x >> window_bounds.size.y;
+        ifs >> framerate_limit;
+        ifs >> vertical_sync_enabled;
+    }
+    else {
+        std::cout << "Failed to open config/window.ini\n";
+    }
+    this->window = new sf::RenderWindow(window_bounds, title, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
+    this->window->setFramerateLimit(60);
+    this->window->setVerticalSyncEnabled(false);
 }
 
 game::game() {
@@ -179,4 +200,6 @@ void game::updateDt()
     this->dt = this->dtClock.getElapsedTime().asSeconds();
     system("cls");
     std::cout << this->dt << "\n";
+
+    this->dtClock.restart();
 }
