@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include "game.h"
+#include "States/gameState.h"
 
 //
 // Created by Logan on 3/11/2025.
@@ -23,19 +24,34 @@ void game::initWindow() {
         ifs >> vertical_sync_enabled;
     }
     else {
-        std::cout << "Failed to open config/window.ini\n";
+        std::cout << "Failed to open config/window.ini" << "\n";
     }
+    ifs.close();
+
     this->window = new sf::RenderWindow(window_bounds, title, sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close);
     this->window->setFramerateLimit(60);
     this->window->setVerticalSyncEnabled(false);
 }
 
+void game::initStates()
+{
+    this->states.push(new gameState(this->window));
+}
+
+// Constructors
 game::game() {
     this->initWindow();
+    this->initStates();
 }
 
 game::~game() {
     delete this->window;
+
+    while(!this->states.empty())
+    {
+        delete this->states.top();
+        this->states.pop();
+    }
 }
 
 void game::updateSFMLEvents()
@@ -96,6 +112,10 @@ void game::updateSFMLEvents()
 
 void game::update() {
     this->updateSFMLEvents();
+
+    if(!this->states.empty()) {
+        this->states.top()->update(this->dt);
+    }
 }
 
 void game::render() {
@@ -103,6 +123,10 @@ void game::render() {
 
     // draw
     this->window->draw(clockText);
+
+    if(!this->states.empty()) {
+        this->states.top()->render(this->window);
+    }
 
     this->window->display();
 }

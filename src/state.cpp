@@ -4,17 +4,25 @@
 
 #include "state.h"
 
-state::state() {
+state::state(sf::RenderWindow* window) {
+    this->window = window;
+    this->quit = false;
 }
 
 state::~state() {
 
 }
 
-void state::update() {
+void state::checkForEnd()
+{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) {
+
+    }
+}
+void state::update(const float& dt) {
 
 }
 
-void state::render() {
+void state::render(sf::RenderTarget* target) {
 
 }

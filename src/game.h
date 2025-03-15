@@ -3,6 +3,7 @@
 //
 
 #include <SFML/Graphics.hpp>
+#include "state.h"
 
 #ifndef CMAKESFMLPROJECT_GAME_H
 #define CMAKESFMLPROJECT_GAME_H
@@ -17,10 +18,12 @@ private:
     sf::Clock dtClock;
     float dt;
 
+    std::stack<state*> states;
     sf::Font f = sf::Font("pixel-arial-14.otf");
     sf::Text clockText = sf::Text(f);
 
     void initWindow();
+    void initStates();
 public:
     game();
     virtual ~game();
